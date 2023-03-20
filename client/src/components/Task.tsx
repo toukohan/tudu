@@ -38,7 +38,7 @@ const Task = ({id, title, description, done, created, updated}: TaskProps) => {
 
                    {taskDone && <button className="taskDeleteButton" onClick={() => deleteTask(id)}>✖</button>}
                 </div>
-                <p>{description}</p>
+                <p className={taskDoneClass}>{description}</p>
             </div>
         )
     }
