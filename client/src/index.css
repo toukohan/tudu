@@ -176,7 +176,7 @@ header h1 {
 
 .createGroup {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 400px;
     box-shadow: 4px 4px 8px 4px rgba(72, 44, 87, 0.251);
@@ -185,6 +185,7 @@ header h1 {
     margin: 1rem;
     border: 1px solid var(--deep-purple);
     border-radius: 8px;
+    max-height: 50px;
 }
 
 .createGroup button {
@@ -193,6 +194,21 @@ header h1 {
     height: 40px;
     width: 150px;
 }
+
+.createTask {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+   
+}
+
+.createTask button {
+    
+    margin-left: 2rem;
+    
+}
+
 
 .flex-row {
     display: flex;
@@ -276,4 +292,14 @@ header h1 {
 
   .modal-content {
     background-color: var(--coffee-cream-);
+}
+
+.taskDone {
+    text-decoration: line-through;
+    color: var(--gray-purple);
+}
+
+.taskDeleteButton {
+    background-color: var(--coffee-cream);
+    color: var(--dark-purple)
 }

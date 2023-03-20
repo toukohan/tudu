@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import Task from './Task'
 import CreateTask from './CreateTask'
 
@@ -10,7 +11,7 @@ export interface GroupProps {
 
 const Group = ({id, name, tasks}: GroupProps) => {
     const [createNewTask, setCreateNewTask] = useState(false);
-
+    
     const toggleCreateNewTask = () => {
         setCreateNewTask(!createNewTask);
     }
@@ -35,7 +36,7 @@ const Group = ({id, name, tasks}: GroupProps) => {
                             id={task._id} 
                             title={task.title} 
                             description={task.description} 
-                            completed={task.completed} 
+                            done={task.done} 
                             created={task.createdAt} 
                             updated={task.updatedAt} 
                         />

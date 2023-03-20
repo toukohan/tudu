@@ -12,6 +12,7 @@ React/TypeScript Vite -build. React Query for server state management.
 
 # Changes
 
+- Added complete task by clicking the task title. And when completed, shows a x to delete the task.
 - Hiding the show -button from the modal until it's functional.
 - Added remove group functionality in the Groups Modal
 - Changed "completed" -> "done" in the taskModel

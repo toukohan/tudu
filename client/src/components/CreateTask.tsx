@@ -30,7 +30,7 @@ const CreateTask = ({ groupId, closeInput }: CreateTaskProps) => {
     });
 
     return (
-        <div className="taskInput">
+        <div className="createTask">
             <div className="extendableInput">
             <input type="text" placeholder="Task Title" value={newTask.title} onChange={(e) => setNewTask({ ...newTask, title: e.target.value })} />
             {newTask.title !== '' &&

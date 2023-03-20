@@ -25,10 +25,6 @@ const Dashboard = () => {
         setShowModal(!showModal);
     }
 
-    const handleDelete = (id: string) => {
-        console.log("delete this group: ", id);
-    }
-
     const handleVisibilityChange = (id: string) => {
         console.log("change visibility of this group: ", id);
     }
@@ -49,7 +45,6 @@ const Dashboard = () => {
                 {showModal ? <><GroupsModal  
                     show={showModal}
                     handleVisibilityChange={handleVisibilityChange}
-                    handleDelete={handleDelete}
                     handleClose={handleShow} 
                     groups={data ? data.data.groups : []} />
                    
