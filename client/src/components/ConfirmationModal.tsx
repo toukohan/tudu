@@ -16,10 +16,10 @@ export default function ConfirmationModal({
 
     return (
         <div className={`modal ${showModal ? "show" : ""}`}>
-        <div className="modal-content">
+        <div className="modal-main">
           <h2>{message}</h2>
           <div className="modal-actions">
-            <button onClick={handleModalClose}>Cancel</button>
+            <button className="margin-right-1" onClick={handleModalClose}>Cancel</button>
             <button className="modalDeleteButton" onClick={handleDeleteConfirm}>Remove</button>
           </div>
         </div>

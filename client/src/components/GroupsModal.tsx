@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useMutation, useQueryClient } from "react-query"
+import axios from "../axiosInstance";
 import ConfirmationModal from "./ConfirmationModal";
 
 export interface GroupsModalProps {
@@ -6,14 +8,23 @@ export interface GroupsModalProps {
     groups: any[];
     handleClose: () => void;
     handleVisibilityChange: (id: string) => void;
-    handleDelete: (id: string) => void;
 }
 
-export default function GroupsModal({ show, handleClose, groups, handleDelete, handleVisibilityChange }: GroupsModalProps) {
+export default function GroupsModal({ show, handleClose, groups, handleVisibilityChange }: GroupsModalProps) {
    const [showModal, setShowModal] = useState(false);
+   const [groupToDelete, setGroupToDelete] = useState("");
 
-    const handleDeleteClick = () => {
+    const queryClient = useQueryClient();
+
+   const { mutate } = useMutation((id: string) => axios.delete(`/groups/delete/${id}`),{
+    onSuccess: () => {
+        queryClient.invalidateQueries('user');
+    }
+});
+
+    const handleDeleteClick = (groupId: string) => {
         setShowModal(true);
+        setGroupToDelete(groupId);
     }
 
     const handleModalClose = () => {
@@ -21,8 +32,9 @@ export default function GroupsModal({ show, handleClose, groups, handleDelete, h
     }
 
     const handleDeleteConfirm = () => {
-        console.log("delete this group: ");
         setShowModal(false);
+        mutate(groupToDelete);
+        handleClose();
     }
 
     return (
@@ -42,10 +54,10 @@ export default function GroupsModal({ show, handleClose, groups, handleDelete, h
                     <div className="flex-row space-between" key={group._id}>
                     <h3>{group.name}</h3>
                     <div>
-                    <button className="margin-right-1" onClick={() => handleVisibilityChange(group._id)}>
+                    {/* <button className="margin-right-1" onClick={() => handleVisibilityChange(group._id)}>
                         {group.visible ? "Hide" : "Show"}
-                    </button>
-                    <button className="modalDeleteButton" onClick={() => handleDeleteClick()}>X</button>
+                    </button> */}
+                    <button className="modalDeleteButton" onClick={() => handleDeleteClick(group._id)}>X</button>
                     </div>
                     </div>
                 ))}

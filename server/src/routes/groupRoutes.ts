@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post("/create", createGroup);
 
-router.delete("/:groupId", deleteGroup);
+router.delete("/delete/:groupId", deleteGroup);
 
 export default router;

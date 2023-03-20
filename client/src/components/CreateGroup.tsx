@@ -18,6 +18,7 @@ const CreateGroup = () => {
         <div className="createGroup">
             <input type="text" placeholder="Group Name" value={name} onChange={(e) => setName(e.target.value)} />
             <button onClick={() => {
+                if(name === '') return;
                 mutate(name);
                 setName('');
             }}

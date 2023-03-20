@@ -273,3 +273,7 @@ header h1 {
   .confirmationModal.show {
     display: block;
   }
+
+  .modal-content {
+    background-color: var(--coffee-cream-);
+}

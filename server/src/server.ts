@@ -11,15 +11,11 @@ import errorHandler from './middleware/errorHandler';
 import notFound from './middleware/notFound';
 
 const app = express();
-const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/mutudu-new';
+const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/mutudu-new';
 const port = process.env.PORT || 4000;
+console.log(mongoUri)
 
 mongoose.connect(mongoUri);
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-  console.log('Connected to database');
-});
 
 app.use(express.json());
 app.use(cors({

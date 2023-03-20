@@ -9,3 +9,11 @@ Node/Express server with MongoDB, written in TypeScript.
 # Client
 
 React/TypeScript Vite -build. React Query for server state management.
+
+# Changes
+
+- Hiding the show -button from the modal until it's functional.
+- Added remove group functionality in the Groups Modal
+- Changed "completed" -> "done" in the taskModel
+- Added functions to taskController
+- Changed the general ConfirmationModal to the general modal css class.

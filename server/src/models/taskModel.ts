@@ -5,7 +5,7 @@ export interface ITask extends Document {
   group: Schema.Types.ObjectId;
   creator: Schema.Types.ObjectId;
   description: string;
-  completed: boolean;
+  done: boolean;
   createdAt?: Date;
   updatedAt?: Date;
   imageUrl?: string;
@@ -27,7 +27,7 @@ const taskSchema: Schema<ITask> = new Schema<ITask>({
     description: {
       type: String,
     },
-    completed: {
+    done: {
       type: Boolean,
       default: false,
     },
