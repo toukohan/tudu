@@ -30,7 +30,7 @@ export default function GroupsModal({ show, handleClose, groups, handleVisibilit
   
    const invite = async (groupId: string, email: string) => {
     const response = axios.post("/users/invite", {groupId, email});
-    console.log(response);
+    
     }
 
    const handleDeleteClick = (groupId: string) => {
@@ -55,7 +55,7 @@ export default function GroupsModal({ show, handleClose, groups, handleVisibilit
    }
 
    const handleInviteConfirm = (groupId: string) => {
-        console.log(groupId, inviteEmail);
+        
         invite(groupId, inviteEmail);
         setInviteOpen(false);
         setInviteEmail("");
@@ -67,7 +67,7 @@ export default function GroupsModal({ show, handleClose, groups, handleVisibilit
     }
     const acceptInvitation = async (groupId: string) => {
         const response = await axios.post("/users/accept-invitation", {groupId, userId});
-        console.log(response);
+        
         queryClient.invalidateQueries('user');
         queryClient.invalidateQueries('invitations');
     }
