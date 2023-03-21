@@ -4,7 +4,7 @@ import jwt, { Secret } from 'jsonwebtoken';
 import User from '../models/userModel';
 
 const router = express.Router();
-const jwtSecret = 'secret' as Secret;
+const jwtSecret = process.env.JWT_SECRET as Secret;
 
 router.get('/', (req, res) => {
   res.json({ message: 'Hello from auth' });

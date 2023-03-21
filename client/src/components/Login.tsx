@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import axios from 'axios'
+import axios from '../axiosInstance'
 
 export interface LoginProps {
     onLogin: (token: string) => void;
@@ -20,7 +20,7 @@ const Login = ({onLogin}: LoginProps) => {
       const loginUser = async () => {
         const { email, password } = loginData;
     
-        const response = await axios.post('http://localhost:4000/auth/login', { email, password });
+        const response = await axios.post('/auth/login', { email, password });
         console.log(response.data)
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', response.data.id);
@@ -30,7 +30,7 @@ const Login = ({onLogin}: LoginProps) => {
       
       const registerUser = async () => {
         const { name, email, password } = loginData;
-        const response = await axios.post('http://localhost:4000/auth/register', { name, email, password });
+        const response = await axios.post('/auth/register', { name, email, password });
         toggleRegister()
       }
    
