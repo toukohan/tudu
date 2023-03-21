@@ -21,7 +21,7 @@ mongoose.connect(mongoUri)
   .catch(err => console.error('Could not connect to MongoDB...', err));
 
 
-app.use(express.static("../client/dist/"))
+app.use(express.static("./public/"))
 app.use(express.json());
 app.use(cors({
   origin: '*',
