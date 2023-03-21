@@ -1,6 +1,8 @@
 import express from 'express';
 import User from '../models/userModel';
 
+import { acceptInvitation, getInvitations, inviteUser } from '../controllers/userController';
+
 const router = express.Router();
 
 router.get("/:userId", async (req, res) => {
@@ -17,5 +19,11 @@ router.get("/:userId", async (req, res) => {
       res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+router.get("/:userId/invitations", getInvitations);
+
+router.post("/invite", inviteUser);
+
+router.post("/accept-invitation", acceptInvitation);
 
 export default router;

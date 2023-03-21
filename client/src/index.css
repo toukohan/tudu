@@ -200,20 +200,40 @@ header h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-   
-   
 }
 
 .createTask button {
-    
     margin-left: 2rem;
-    
 }
 
+.group-invite-box {
+    margin: 0.5rem;
+    padding: 0.5rem;
+   
+}
+
+.closeInviteButton {
+    background-color: var(--coffee-cream);
+    color: var(--dark-purple);
+}
+
+.closeInviteButton:hover {
+    color: var(--muted-purple);
+    background-color: var(--coffee-cream);
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
 
 .flex-row {
     display: flex;
-    
+    flex-direction: row;
+}
+
+.align-left {
+    align-items: flex-start;
 }
 
 .space-between {

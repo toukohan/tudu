@@ -5,6 +5,7 @@ export interface IUser extends Document {
   password: string;
   email: string;
   groups: Schema.Types.ObjectId[];
+  invitations: Schema.Types.ObjectId[];
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -26,7 +27,12 @@ const userSchema: Schema<IUser> = new Schema<IUser>({
     type: [Schema.Types.ObjectId],
     ref: 'Group',
     default: [],
-  }
+  },
+  invitations: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Group',
+    default: [],
+  },
 }, { timestamps: true });
 
 export default model<IUser>('User', userSchema);

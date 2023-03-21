@@ -11,7 +11,12 @@ Node/Express server with MongoDB, written in TypeScript.
 React/TypeScript Vite -build. React Query for server state management.
 
 # Changes
-
+- Removed onBlur closeInput (it closed the input before making a submission)
+- Added invite user and accept invitation functionality
+- Added pending invitations to Groups Modal
+- Added invite user button to Groups Modal
+- Added invitations array to userModel.
+- Removed unused dependencies
 - Added onBlur closeInput on the createTask
 - Added complete task by clicking the task title. And when completed, shows a x to delete the task.
 - Hiding the show -button from the modal until it's functional.

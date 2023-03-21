@@ -32,7 +32,7 @@ const CreateTask = ({ groupId, closeInput }: CreateTaskProps) => {
     return (
         <div className="createTask">
             <div className="extendableInput">
-            <input type="text" placeholder="Task Title" value={newTask.title} onChange={(e) => setNewTask({ ...newTask, title: e.target.value })} onBlur={closeInput} autoFocus />
+            <input type="text" placeholder="Task Title" value={newTask.title} onChange={(e) => setNewTask({ ...newTask, title: e.target.value })} autoFocus />
             {newTask.title !== '' &&
                     <input type="text" placeholder="Task Description" value={newTask.description} onChange={(e) => setNewTask({ ...newTask, description: e.target.value })} />
                 }
