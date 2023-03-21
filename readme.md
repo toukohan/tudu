@@ -10,7 +10,13 @@ Node/Express server with MongoDB, written in TypeScript.
 
 React/TypeScript Vite -build. React Query for server state management.
 
+App deployed at Heroku: [mutudu](http://mutudu.herokuapp.com)
+
 # Changes
+
+- Changed axios baseurl for deployment
+- Built the client to public folder for deployment
+- Moved server to root
 - Removed onBlur closeInput (it closed the input before making a submission)
 - Added invite user and accept invitation functionality
 - Added pending invitations to Groups Modal

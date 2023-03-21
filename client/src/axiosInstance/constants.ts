@@ -1,1 +1,1 @@
-export const baseUrl = 'https://mutudu.herokuapp.com';
+export const baseUrl = 'http://mutudu.herokuapp.com';
