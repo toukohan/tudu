@@ -2,6 +2,7 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt, { Secret } from 'jsonwebtoken';
 import User from '../models/userModel';
+import { authenticateToken, AuthenticatedRequest } from '../middleware/authenticateToken';
 
 const router = express.Router();
 const jwtSecret = process.env.JWT_SECRET as Secret;
@@ -35,12 +36,23 @@ router.post('/login', async (req, res) => {
     const passwordMatch = await bcrypt.compare(req.body.password, user.password);
     if (!passwordMatch) return res.status(401).json({ message: 'Invalid email or password' });
     
-    const token = jwt.sign({ sub: user._id }, jwtSecret, {expiresIn: '1h'});
+    const token = jwt.sign({ sub: user._id }, jwtSecret, {expiresIn: '7d'});
     res.status(200).json({ token, id: user._id });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+router.post('/refresh', authenticateToken, async (req, res) => {
+  try {
+    const token = jwt.sign({ sub: (req as AuthenticatedRequest).user._id }, jwtSecret, {expiresIn: '7d'});
+    res.status(200).json({ token, id: (req as AuthenticatedRequest).user._id });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 
 export default router;

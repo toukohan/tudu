@@ -72,6 +72,13 @@ export default function GroupsModal({ show, handleClose, groups, handleVisibilit
         queryClient.invalidateQueries('invitations');
     }
 
+    const declineInvitation = async (groupId: string) => {
+        const response = await axios.post("/users/decline-invitation", {groupId, userId});
+
+        queryClient.invalidateQueries('user');
+        queryClient.invalidateQueries('invitations');
+    }
+
 
     return (
         <div className={show ? "modal display-block" : "modal display-none"}>
@@ -103,10 +110,10 @@ export default function GroupsModal({ show, handleClose, groups, handleVisibilit
                             </button> */}
                             {
                             !inviteOpen ?
-                                <>
+                                <div className="flex-row">
                                 <button className="inviteUserButton margin-right-1" onClick={() => handleInviteClick(group._id)}>Invite</button>
-                                <button className="modalDeleteButton" onClick={() => handleDeleteClick(group._id)}>X</button>
-                                </>
+                                <button className="modalDeleteButton" onClick={() => handleDeleteClick(group._id)}>✖</button>
+                                </div>
                                 : 
                                 groupToInvite === group._id && <button className="closeInviteButton" onClick={handleInviteClose}>✖</button>
                                 
@@ -115,19 +122,24 @@ export default function GroupsModal({ show, handleClose, groups, handleVisibilit
                     
                     </div>
                 ))}
-
-                {invitations && invitations.data.map((group: any) => {
+                    <div>
+                    <h1>{(invitations && invitations.data.length > 0) ? "Invitations": ""}</h1>
+                {invitations ? invitations.data.map((group: any) => {
                     return (
-                    <div className="flex-row space-between group-invite-box" key={group._id}>
-                        <div className="flex-column align-left">
+                        <div className="flex-row space-between group-invite-box" key={group._id}>
+                        
                             <h3>{group.name}</h3>
-                            <button onClick={() => acceptInvitation(group._id)}>Join</button>
-                        </div>
+                            <div className="flex-row">
+                            <button className="margin-right-1 join-button" onClick={() => acceptInvitation(group._id)}>Join</button>
+                            <button className="decline-button" onClick={() => declineInvitation(group._id)}>✖</button>
+                            </div>
+                        
                         </div>
                     )
                     
-                    }
-                )}
+                }
+                ): null}
+                </div>
 
        
                 

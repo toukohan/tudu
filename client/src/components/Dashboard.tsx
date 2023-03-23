@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useQuery } from 'react-query'
+
 import CreateGroup from './CreateGroup'
 import Group from './Group'
 import GroupsModal from './GroupsModal'
@@ -25,6 +26,7 @@ const Dashboard = () => {
         setShowModal(!showModal);
     }
 
+    // TODO?
     const handleVisibilityChange = (id: string) => {
         console.log("change visibility of this group: ", id);
     }
@@ -36,6 +38,7 @@ const Dashboard = () => {
     if (isError) {
         return <div>There was an error</div>
     }
+    
 
     return (
         <div className="container">
@@ -49,7 +52,7 @@ const Dashboard = () => {
                     groups={data ? data.data.groups : []} />
                    
                     </>
-                : <button className="btn-secondary margin-right-1" onClick={handleShow}>Groups</button>}
+                : <button className="btn-secondary margin-right-1" onClick={handleShow}>Groups {data && data.data.invitations.length > 0 ? <span className="new-invitations"> {data.data.invitations.length}</span> : null}</button>}
                 <button className="btn-secondary" onClick={logoutUser}>Logout</button>
             </div>
             </header>

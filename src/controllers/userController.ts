@@ -61,6 +61,22 @@ export const acceptInvitation = async (req: Request, res: Response) => {
     }
 }
 
+export const declineInvitation = async (req: Request, res: Response) => {
+    const { userId, groupId } = req.body;
+    try {
+        const user = await findUserById(userId);
+        if(!user) return res.status(404).json({ message: 'User not found' });
+        if(!user.invitations.includes(groupId)) return res.status(400).json({ message: 'User not invited to group' });
+        user.invitations = user.invitations.filter(invitation => invitation != groupId);
+        await user.save();
+        res.json(user);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
 export const getInvitations = async (req: Request, res: Response) => {
     const { userId } = req.params;
     try {

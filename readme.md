@@ -14,6 +14,9 @@ App deployed at Heroku: [mutudu](http://mutudu.herokuapp.com)
 
 # Changes
 
+- Added some new styling for the Groups Modal.
+- Added authenticateToken middleware for protected routes.
+- Added indication of received invitation on the groups button.
 - Changed axios baseurl for deployment
 - Built the client to public folder for deployment
 - Moved server to root

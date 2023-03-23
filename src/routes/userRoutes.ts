@@ -1,7 +1,7 @@
 import express from 'express';
 import User from '../models/userModel';
 
-import { acceptInvitation, getInvitations, inviteUser } from '../controllers/userController';
+import { acceptInvitation, declineInvitation, getInvitations, inviteUser } from '../controllers/userController';
 
 const router = express.Router();
 
@@ -25,5 +25,7 @@ router.get("/:userId/invitations", getInvitations);
 router.post("/invite", inviteUser);
 
 router.post("/accept-invitation", acceptInvitation);
+
+router.post("/decline-invitation", declineInvitation);
 
 export default router;
