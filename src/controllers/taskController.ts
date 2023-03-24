@@ -4,7 +4,6 @@ import Task from '../models/taskModel';
 import Group from '../models/groupModel';
 
 export const createTask = async (req: Request, res: Response) => {
-    console.log(req.body)
     const { title, description, user: userId, group: groupId } = req.body;
     try {
         const newTask = new Task({
@@ -33,7 +32,8 @@ export const updateTask = async (req: Request, res: Response) => {
         if (!task) return res.status(404).json({ message: 'Task not found' });
         if (title) task.title = title;
         if (description) task.description = description;
-        if (done) task.done = done;
+        if (done === true) task.done = true;
+        if (done === false) task.done = false;
         const updatedTask = await task.save();
         res.status(200).json(updatedTask);
     } catch (error) {

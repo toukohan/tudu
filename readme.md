@@ -14,8 +14,9 @@ App deployed at Heroku: [mutudu](http://mutudu.herokuapp.com)
 
 # Changes
 
+- Fixed updating taskCompletion
 - Added some new styling for the Groups Modal.
-- Added authenticateToken middleware for protected routes.
+- Created authenticateToken middleware for protected routes (there is something wrong with it)
 - Added indication of received invitation on the groups button.
 - Changed axios baseurl for deployment
 - Built the client to public folder for deployment

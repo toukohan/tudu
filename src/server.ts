@@ -28,7 +28,7 @@ app.use(cors({
   credentials: true,
 }));
 
-app.use(['/users', '/groups', '/tasks'], authenticateToken);
+// app.use(['/users', '/groups', '/tasks'], authenticateToken);
 
 app.use("/auth", authRouter);
 app.use("/users", userRouter);

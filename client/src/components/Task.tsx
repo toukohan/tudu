@@ -7,36 +7,40 @@ export interface TaskProps {
     title: string;
     description: string;
     done: boolean;
-    created: string;
-    updated: string;
+    created?: string;
+    updated?: string;
+}
+
+interface TaskChanges {
+    title?: string;
+    description?: string;
+    done?: boolean;
 }
 
 const Task = ({id, title, description, done, created, updated}: TaskProps) => {
-    const [taskDone, setTaskDone] = useState(done);
     const queryClient = useQueryClient();
-
     const { mutate: deleteTask } = useMutation((id: string) => axios.delete(`/tasks/delete/${id}`), {
         onSuccess: () => {
             queryClient.invalidateQueries('user');
         }
     });
 
-    const { mutate: markDone } = useMutation((id: string) => axios.patch(`/tasks/update/${id}`, {}),{
+    const { mutate: updateTask } = useMutation((changes: TaskChanges) => axios.patch(`/tasks/update/${id}`, changes), {
         onSuccess: () => {
             queryClient.invalidateQueries('user');
         }
     });
 
-    const taskDoneClass = taskDone ? 'taskDone' : '';
+    const taskDoneClass = done ? 'taskDone' : '';
         return (
             <div className="task">
                 <div className={`flex-row space-between`}>
                     <h3 className={taskDoneClass} onClick={() => {
-                        setTaskDone(!taskDone)
-                        markDone(id)}}
+                        updateTask({done: done ? false : true})
+                    }}
                         >{title}</h3>
 
-                   {taskDone && <button className="taskDeleteButton" onClick={() => deleteTask(id)}>✖</button>}
+                   {done && <button className="taskDeleteButton" onClick={() => deleteTask(id)}>✖</button>}
                 </div>
                 <p className={taskDoneClass}>{description}</p>
             </div>

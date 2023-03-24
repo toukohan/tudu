@@ -5,13 +5,6 @@ import Dashboard from './components/Dashboard'
 function App() {
   const [token, setToken] = useState<string | null>(null);
 
-  useEffect(() => {
-    const localToken = localStorage.getItem('token');
-    if (localToken) {
-      setToken(localToken);
-    }
-  }, []);
-
   const handleLogin = (token: string) => {
     setToken(token);
   }
