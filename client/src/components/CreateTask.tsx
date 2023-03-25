@@ -31,22 +31,24 @@ const CreateTask = ({ groupId, closeInput }: CreateTaskProps) => {
 
     return (
         <div className="createTask">
-            <div className="extendableInput">
-            <input type="text" placeholder="Task Title" value={newTask.title} onChange={(e) => setNewTask({ ...newTask, title: e.target.value })} autoFocus />
-            {newTask.title !== '' &&
-                    <input type="text" placeholder="Task Description" value={newTask.description} onChange={(e) => setNewTask({ ...newTask, description: e.target.value })} />
-                }
-                </div>
-            <button className="addButton" onClick={() => {
+            <form className="flex-row" onSubmit={(e) => {
+                e.preventDefault();
                 if(newTask.title === '') {
                     closeInput();
-                    setNewTask({ ...newTask, title: '', description: '' });
-                    return;
+                setNewTask({ ...newTask, title: '', description: '' });
+                return;
                 }
                 mutate(newTask);
                 setNewTask({ ...newTask, title: '', description: '' });
-            }}
-            >+</button>
+            }}>
+                <div className="extendableInput">
+                    <input type="text" placeholder="Task Title" value={newTask.title} onChange={(e) => setNewTask({ ...newTask, title: e.target.value })} autoFocus />
+                    {newTask.title !== '' &&
+                    <input type="text" placeholder="Task Description" value={newTask.description} onChange={(e) => setNewTask({ ...newTask, description: e.target.value })} />
+                }
+                </div>
+            <button type="submit" className="addButton">+</button>
+            </form>
         </div>
     )
 }

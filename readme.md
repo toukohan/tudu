@@ -14,6 +14,9 @@ App deployed at Heroku: [mutudu](http://mutudu.herokuapp.com)
 
 # Changes
 
+- Added forms for creating tasks (for the enter key submission)
+- Added some toasts
+- Added some error handling for auth
 - Fixed updating taskCompletion
 - Added some new styling for the Groups Modal.
 - Created authenticateToken middleware for protected routes (there is something wrong with it)

@@ -66,12 +66,15 @@ button:hover {
     background-color: var(--white);
 }
 
+hr {
+    border: 1px solid var(--deep-purple);
+}
+
 .addButton {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 0.5rem;
-    margin-left: 1rem;
-    padding: 1rem;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1rem;
+    
 }
 .closeButton {
     position: absolute;
@@ -337,6 +340,15 @@ header h1 {
 .taskDone {
     text-decoration: line-through;
     color: var(--gray-purple);
+}
+.task {
+    margin-bottom: 0.5rem;
+}
+.task-title {
+    margin: 0;
+}
+.task-description {
+    margin: 0 0 0 0.5rem;
 }
 
 .taskDeleteButton {

@@ -35,14 +35,14 @@ const Task = ({id, title, description, done, created, updated}: TaskProps) => {
         return (
             <div className="task">
                 <div className={`flex-row space-between`}>
-                    <h3 className={taskDoneClass} onClick={() => {
+                    <h3 className={`${taskDoneClass} task-title`} onClick={() => {
                         updateTask({done: done ? false : true})
                     }}
                         >{title}</h3>
 
                    {done && <button className="taskDeleteButton" onClick={() => deleteTask(id)}>✖</button>}
                 </div>
-                <p className={taskDoneClass}>{description}</p>
+                <p className={`${taskDoneClass} task-description`}>{description}</p>
             </div>
         )
     }

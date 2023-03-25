@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [token, setToken] = useState<string | null>(null);
@@ -9,6 +11,7 @@ function App() {
     const localToken = localStorage.getItem('token');
     if (localToken) {
       setToken(localToken);
+      toast.info("Logged in with local token", {toastId: "localToken"});
     }
   }, []);
 
@@ -19,6 +22,7 @@ function App() {
   return (
     <div className="App">
       {token ? <Dashboard /> : <Login onLogin={handleLogin} /> }
+      <ToastContainer position='bottom-center' hideProgressBar={true} autoClose={5000} />
     </div>
   )
 }

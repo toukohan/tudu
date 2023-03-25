@@ -28,6 +28,7 @@ const Group = ({id, name, tasks}: GroupProps) => {
                         <button className="addButton" onClick={toggleCreateNewTask}>+</button>
                         </>)}
             </div>
+            <hr />
             <div className="tasks">
                 {tasks && tasks.map((task: any) => {
                     return (
